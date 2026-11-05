@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliminar cuenta — Drivezon</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #222; background: #fff; }
+    h1 { color: #B8860B; }
+    h2 { color: #333; margin-top: 30px; }
+    .fecha { color: #666; font-style: italic; }
+    .aviso { background: #fff8e1; border-left: 4px solid #B8860B; padding: 15px; border-radius: 4px; margin: 20px 0; }
+    .aviso-rojo { background: #fff0f0; border-left: 4px solid #c0392b; padding: 15px; border-radius: 4px; margin: 20px 0; }
+    .nota-final { background: #f5f5f5; padding: 15px; border-radius: 8px; margin-top: 40px; font-size: 0.9em; }
+    form { background: #f9f9f9; padding: 24px; border-radius: 8px; margin: 30px 0; }
+    label { display: block; margin-bottom: 6px; font-weight: bold; color: #333; }
+    input[type="email"], textarea, select {
+      width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px;
+      font-size: 1em; box-sizing: border-box; margin-bottom: 16px;
+    }
+    textarea { height: 100px; resize: vertical; }
+    button[type="submit"] {
+      background: #c0392b; color: white; border: none; padding: 12px 28px;
+      border-radius: 6px; font-size: 1em; cursor: pointer; width: 100%;
+    }
+    button[type="submit"]:hover { background: #a93226; }
+    .confirmacion { display: none; background: #e8f5e9; border-left: 4px solid #27ae60; padding: 15px; border-radius: 4px; margin: 20px 0; }
+    hr { border: none; border-top: 1px solid #eee; margin: 30px 0; }
+    a { color: #B8860B; }
+  </style>
+</head>
+<body>
+
+  <h1>Solicitud de eliminación de cuenta</h1>
+  <p class="fecha">Drivezon — aplicación de seguridad para conductores</p>
+
+  <div class="aviso">
+    <strong>Podés eliminar tu cuenta directamente desde la app</strong> en cualquier momento:<br>
+    Menú → Perfil → Eliminar cuenta.<br><br>
+    Si no tenés acceso a la app, completá el formulario a continuación.
+  </div>
+
+  <hr>
+
+  <h2>¿Qué se elimina?</h2>
+  <p>Al eliminar tu cuenta se borran permanentemente:</p>
+  <ul>
+    <li>Tu correo electrónico y contraseña</li>
+    <li>Tu historial de ubicaciones durante Modo Viaje</li>
+    <li>Tus contactos de confianza registrados</li>
+    <li>Tus reportes de zonas de riesgo</li>
+    <li>Tus grabaciones de audio almacenadas (si las hay)</li>
+    <li>Tus tokens de notificaciones push</li>
+  </ul>
+
+  <div class="aviso-rojo">
+    <strong>Esta acción es irreversible.</strong> Una vez eliminada la cuenta no es posible recuperar ningún dato.
+  </div>
+
+  <hr>
+
+  <h2>Formulario de solicitud</h2>
+  <p>Completá el formulario con el correo asociado a tu cuenta. Procesaremos tu solicitud en un plazo máximo de <strong>5 días hábiles</strong>.</p>
+
+  <form id="formEliminar">
+    <label for="correo">Correo electrónico de tu cuenta *</label>
+    <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com" required>
+
+    <label for="motivo">Motivo (opcional)</label>
+    <select id="motivo" name="motivo">
+      <option value="">— Seleccioná un motivo —</option>
+      <option value="ya_no_uso">Ya no uso la aplicación</option>
+      <option value="privacidad">Preocupaciones de privacidad</option>
+      <option value="problemas_tecnicos">Problemas técnicos</option>
+      <option value="otro">Otro</option>
+    </select>
+
+    <label for="comentario">Comentario adicional (opcional)</label>
+    <textarea id="comentario" name="comentario" placeholder="Si querés contarnos algo más..."></textarea>
+
+    <button type="submit">Solicitar eliminación de mi cuenta</button>
+  </form>
+
+  <div class="confirmacion" id="confirmacion">
+    <strong>✅ Solicitud recibida.</strong><br>
+    Hemos recibido tu solicitud para eliminar la cuenta asociada al correo <strong id="correoConfirmado"></strong>.<br>
+    La procesaremos en un plazo máximo de 5 días hábiles y recibirás una confirmación por correo.
+  </div>
+
+  <hr>
+
+  <h2>Eliminar solo tus datos (sin cerrar cuenta)</h2>
+  <p>Si querés eliminar datos específicos sin cerrar tu cuenta, escribinos directamente a <a href="mailto:desarrollostecr@gmail.com">desarrollostecr@gmail.com</a> indicando qué datos deseas eliminar.</p>
+
+  <div class="nota-final">
+    <strong>Contacto:</strong> desarrollostecr@gmail.com<br>
+    <strong>Tiempo de respuesta:</strong> máximo 5 días hábiles<br>
+    <strong>Política de Privacidad:</strong> <a href="https://jaezos.github.io/drivezon-privacy/">Ver política completa</a>
+  </div>
+
+  <script>
+    document.getElementById('formEliminar').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const correo = document.getElementById('correo').value;
+      const motivo = document.getElementById('motivo').value;
+      const comentario = document.getElementById('comentario').value;
+
+      // Construir el cuerpo del email
+      const asunto = encodeURIComponent('Solicitud de eliminación de cuenta Drivezon');
+      const cuerpo = encodeURIComponent(
+        'Solicitud de eliminación de cuenta\n\n' +
+        'Correo: ' + correo + '\n' +
+        'Motivo: ' + (motivo || 'No especificado') + '\n' +
+        'Comentario: ' + (comentario || 'Ninguno') + '\n\n' +
+        'Por favor procesar esta solicitud en un plazo máximo de 5 días hábiles.'
+      );
+
+      // Mostrar confirmación visual primero
+      document.getElementById('correoConfirmado').textContent = correo;
+      document.getElementById('confirmacion').style.display = 'block';
+      document.getElementById('formEliminar').style.display = 'none';
+
+      // Abrir cliente de email sin redirigir la página
+      const enlace = document.createElement('a');
+      enlace.href = 'mailto:desarrollostecr@gmail.com?subject=' + asunto + '&body=' + cuerpo;
+      enlace.style.display = 'none';
+      document.body.appendChild(enlace);
+      enlace.click();
+      document.body.removeChild(enlace);
+
+      window.scrollTo(0, document.getElementById('confirmacion').offsetTop - 20);
+    });
+  </script>
+
+</body>
+</html>
