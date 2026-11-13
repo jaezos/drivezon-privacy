@@ -1,136 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eliminar cuenta — Drivezon</title>
-  <style>
-    body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #222; background: #fff; }
-    h1 { color: #B8860B; }
-    h2 { color: #333; margin-top: 30px; }
-    .fecha { color: #666; font-style: italic; }
-    .aviso { background: #fff8e1; border-left: 4px solid #B8860B; padding: 15px; border-radius: 4px; margin: 20px 0; }
-    .aviso-rojo { background: #fff0f0; border-left: 4px solid #c0392b; padding: 15px; border-radius: 4px; margin: 20px 0; }
-    .nota-final { background: #f5f5f5; padding: 15px; border-radius: 8px; margin-top: 40px; font-size: 0.9em; }
-    form { background: #f9f9f9; padding: 24px; border-radius: 8px; margin: 30px 0; }
-    label { display: block; margin-bottom: 6px; font-weight: bold; color: #333; }
-    input[type="email"], textarea, select {
-      width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px;
-      font-size: 1em; box-sizing: border-box; margin-bottom: 16px;
-    }
-    textarea { height: 100px; resize: vertical; }
-    button[type="submit"] {
-      background: #c0392b; color: white; border: none; padding: 12px 28px;
-      border-radius: 6px; font-size: 1em; cursor: pointer; width: 100%;
-    }
-    button[type="submit"]:hover { background: #a93226; }
-    .confirmacion { display: none; background: #e8f5e9; border-left: 4px solid #27ae60; padding: 15px; border-radius: 4px; margin: 20px 0; }
-    hr { border: none; border-top: 1px solid #eee; margin: 30px 0; }
-    a { color: #B8860B; }
-  </style>
-</head>
-<body>
-
-  <h1>Solicitud de eliminación de cuenta</h1>
-  <p class="fecha">Drivezon — aplicación de seguridad para conductores</p>
-
-  <div class="aviso">
-    <strong>Podés eliminar tu cuenta directamente desde la app</strong> en cualquier momento:<br>
-    Menú → Perfil → Eliminar cuenta.<br><br>
-    Si no tenés acceso a la app, completá el formulario a continuación.
-  </div>
-
-  <hr>
-
-  <h2>¿Qué se elimina?</h2>
-  <p>Al eliminar tu cuenta se borran permanentemente:</p>
-  <ul>
-    <li>Tu correo electrónico y contraseña</li>
-    <li>Tu historial de ubicaciones durante Modo Viaje</li>
-    <li>Tus contactos de confianza registrados</li>
-    <li>Tus reportes de zonas de riesgo</li>
-    <li>Tus grabaciones de audio almacenadas (si las hay)</li>
-    <li>Tus tokens de notificaciones push</li>
-  </ul>
-
-  <div class="aviso-rojo">
-    <strong>Esta acción es irreversible.</strong> Una vez eliminada la cuenta no es posible recuperar ningún dato.
-  </div>
-
-  <hr>
-
-  <h2>Formulario de solicitud</h2>
-  <p>Completá el formulario con el correo asociado a tu cuenta. Procesaremos tu solicitud en un plazo máximo de <strong>5 días hábiles</strong>.</p>
-
-  <form id="formEliminar">
-    <label for="correo">Correo electrónico de tu cuenta *</label>
-    <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com" required>
-
-    <label for="motivo">Motivo (opcional)</label>
-    <select id="motivo" name="motivo">
-      <option value="">— Seleccioná un motivo —</option>
-      <option value="ya_no_uso">Ya no uso la aplicación</option>
-      <option value="privacidad">Preocupaciones de privacidad</option>
-      <option value="problemas_tecnicos">Problemas técnicos</option>
-      <option value="otro">Otro</option>
-    </select>
-
-    <label for="comentario">Comentario adicional (opcional)</label>
-    <textarea id="comentario" name="comentario" placeholder="Si querés contarnos algo más..."></textarea>
-
-    <button type="submit">Solicitar eliminación de mi cuenta</button>
-  </form>
-
-  <div class="confirmacion" id="confirmacion">
-    <strong>✅ Solicitud recibida.</strong><br>
-    Hemos recibido tu solicitud para eliminar la cuenta asociada al correo <strong id="correoConfirmado"></strong>.<br>
-    La procesaremos en un plazo máximo de 5 días hábiles y recibirás una confirmación por correo.
-  </div>
-
-  <hr>
-
-  <h2>Eliminar solo tus datos (sin cerrar cuenta)</h2>
-  <p>Si querés eliminar datos específicos sin cerrar tu cuenta, escribinos directamente a <a href="mailto:desarrollostecr@gmail.com">desarrollostecr@gmail.com</a> indicando qué datos deseas eliminar.</p>
-
-  <div class="nota-final">
-    <strong>Contacto:</strong> desarrollostecr@gmail.com<br>
-    <strong>Tiempo de respuesta:</strong> máximo 5 días hábiles<br>
-    <strong>Política de Privacidad:</strong> <a href="https://jaezos.github.io/drivezon-privacy/">Ver política completa</a>
-  </div>
-
-  <script>
-    document.getElementById('formEliminar').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const correo = document.getElementById('correo').value;
-      const motivo = document.getElementById('motivo').value;
-      const comentario = document.getElementById('comentario').value;
-
-      // Construir el cuerpo del email
-      const asunto = encodeURIComponent('Solicitud de eliminación de cuenta Drivezon');
-      const cuerpo = encodeURIComponent(
-        'Solicitud de eliminación de cuenta\n\n' +
-        'Correo: ' + correo + '\n' +
-        'Motivo: ' + (motivo || 'No especificado') + '\n' +
-        'Comentario: ' + (comentario || 'Ninguno') + '\n\n' +
-        'Por favor procesar esta solicitud en un plazo máximo de 5 días hábiles.'
-      );
-
-      // Mostrar confirmación visual primero
-      document.getElementById('correoConfirmado').textContent = correo;
-      document.getElementById('confirmacion').style.display = 'block';
-      document.getElementById('formEliminar').style.display = 'none';
-
-      // Abrir cliente de email sin redirigir la página
-      const enlace = document.createElement('a');
-      enlace.href = 'mailto:desarrollostecr@gmail.com?subject=' + asunto + '&body=' + cuerpo;
-      enlace.style.display = 'none';
-      document.body.appendChild(enlace);
-      enlace.click();
-      document.body.removeChild(enlace);
-
-      window.scrollTo(0, document.getElementById('confirmacion').offsetTop - 20);
-    });
-  </script>
-
-</body>
-</html>
+<!doctype html>
+<html lang="es-CR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Solicitá la eliminación de tu cuenta y datos de Drivezon."><title>Eliminar cuenta | Drivezon</title><link rel="stylesheet" href="styles.css"></head>
+<body><header class="top"><div class="shell nav"><a class="brand" href="index.html"><span class="shield">◆</span> DRIVEZON</a><nav aria-label="Navegación"><a href="index.html">Privacidad</a><a aria-current="page" href="delete-account.html">Eliminar cuenta</a></nav></div></header>
+<main class="shell"><div class="hero"><span class="eyebrow">CONTROL DE TUS DATOS</span><h1>Solicitud de eliminación de cuenta</h1><p class="lead">Podés solicitar la eliminación de tu cuenta de Drivezon aunque ya no tengas acceso a la aplicación.</p></div>
+<article class="content"><section><h2>1. Desde la aplicación</h2><p>Si podés iniciar sesión, utilizá la opción <strong>Eliminar cuenta</strong> disponible en la sección de perfil o ayuda de Drivezon. Confirmá la operación cuando la aplicación lo solicite. La eliminación de cuenta es irreversible.</p></section>
+<section><h2>2. Sin acceso a la aplicación</h2><p>Enviá una solicitud a <a href="mailto:desarrollostecr@gmail.com">desarrollostecr@gmail.com</a> desde el correo asociado a tu cuenta, con el asunto <strong>Solicitud de eliminación de cuenta Drivezon</strong>. También podés utilizar el formulario inferior para preparar ese mensaje en tu aplicación de correo.</p><p><strong>Plazo de atención previsto:</strong> hasta 5 días hábiles desde la recepción de la solicitud, sujeto a la verificación necesaria para proteger la cuenta. Este plazo es un compromiso operativo que debe poder cumplirse.</p></section>
+<section><h2>3. Qué datos se eliminan</h2><ul><li>La cuenta de autenticación y los datos asociados en los sistemas activos, según el procedimiento de eliminación implementado.</li><li>Los contactos de confianza y tokens de notificaciones vinculados a la cuenta.</li><li>Los reportes de zonas comunitarias asociados a la cuenta.</li><li>Los registros de seguridad y alertas de pánico vinculados a la cuenta, según el proceso probado.</li><li>Las preferencias y registros de cuenta incluidos en el proceso de eliminación.</li></ul><h3>Datos que pueden conservarse o requerir acciones adicionales</h3><ul><li><strong>Correo para control promocional:</strong> puede mantenerse en un registro interno para evitar la reutilización de promociones. El período de conservación está pendiente de definición y verificación.</li><li><strong>Grabaciones guardadas en tu dispositivo:</strong> pueden permanecer en el almacenamiento local. Revisá y eliminá los archivos desde las opciones disponibles en la aplicación o desde los ajustes del dispositivo. La eliminación remota de archivos locales no está garantizada.</li><li><strong>Copias de seguridad:</strong> si existen, podrían seguir ciclos de conservación técnicos que deben verificarse.</li></ul><p>La eliminación de tu cuenta no elimina las zonas generales o semilla que no estén asociadas a tu identidad.</p></section>
+<section><h2>4. Prepará tu solicitud por correo</h2><div class="notice"><strong>Cómo funciona:</strong> este formulario abre tu aplicación de correo con un mensaje preparado. <strong>No envía datos automáticamente a un servidor.</strong> Debés pulsar «Enviar» desde tu correo para completar la solicitud.</div>
+<form id="deletionForm" class="form"><label for="email">Correo electrónico asociado a la cuenta <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" required autocomplete="email" placeholder="tu-correo@ejemplo.com"><label for="reason">Motivo (opcional)</label><select id="reason" name="reason"><option value="">Prefiero no indicarlo</option><option>Ya no utilizo la aplicación</option><option>Privacidad</option><option>Problemas técnicos</option><option>Otro motivo</option></select><label for="comment">Comentario adicional (opcional)</label><textarea id="comment" name="comment" rows="4" maxlength="1500" placeholder="No incluyás contraseñas ni información sensible"></textarea><button type="submit" class="button">Preparar correo de eliminación</button><p id="formStatus" class="hint" role="status" aria-live="polite">El mensaje se abrirá en tu aplicación de correo. No se enviará automáticamente.</p></form>
+<p class="hint">Si el botón no abre tu correo, escribí directamente a <a href="mailto:desarrollostecr@gmail.com?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta%20Drivezon">desarrollostecr@gmail.com</a>.</p></section>
+<section><h2>5. Eliminar datos específicos sin cerrar la cuenta</h2><p>Si querés solicitar la eliminación de datos concretos sin cerrar tu cuenta, escribí a <a href="mailto:desarrollostecr@gmail.com">desarrollostecr@gmail.com</a> e indicá qué información deseás eliminar. Evaluaremos la solicitud y te indicaremos las opciones disponibles.</p></section>
+<section><h2>6. Privacidad y contacto</h2><p>Consultá la <a href="index.html">Política de privacidad de Drivezon</a> para conocer el tratamiento de tus datos. Contacto: <a href="mailto:desarrollostecr@gmail.com">desarrollostecr@gmail.com</a>.</p></section></article></main>
+<footer><div class="shell">© 2026 Drivezon · <a href="index.html">Privacidad</a> · <a href="delete-account.html">Eliminación de cuenta</a></div></footer>
+<script>
+(function(){
+ const form=document.getElementById('deletionForm');
+ form.addEventListener('submit',function(event){
+  event.preventDefault();
+  if(!form.reportValidity()) return;
+  const email=document.getElementById('email').value.trim();
+  const reason=document.getElementById('reason').value;
+  const comment=document.getElementById('comment').value.trim();
+  const subject='Solicitud de eliminación de cuenta Drivezon';
+  const body=['Solicito la eliminación de mi cuenta de Drivezon.','', 'Correo asociado a mi cuenta: '+email,'Motivo: '+(reason||'No indicado'),'Comentario: '+(comment||'Sin comentarios'),'','Entiendo que la solicitud puede requerir verificación de titularidad.'].join('\n');
+  const url='mailto:desarrollostecr@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  document.getElementById('formStatus').textContent='Se está abriendo tu correo. La solicitud solo se completa cuando enviás el mensaje desde tu aplicación de correo.';
+  window.location.href=url;
+ });
+})();
+</script></body></html>

@@ -1,78 +1,33 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-CR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidad - Drivezon</title>
-  <style>
-    body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #222; background: #fff; }
-    h1 { color: #B8860B; }
-    h2 { color: #333; margin-top: 30px; }
-    .fecha { color: #666; font-style: italic; }
-    .nota-final { background: #f5f5f5; padding: 15px; border-radius: 8px; margin-top: 40px; font-size: 0.9em; }
-    hr { border: none; border-top: 1px solid #ddd; margin: 25px 0; }
-  </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Política de privacidad de Drivezon, aplicación de seguridad para conductores.">
+  <title>Política de privacidad | Drivezon</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Política de Privacidad de Drivezon</h1>
-  <p class="fecha">Última actualización: 4 de noviembre de 2026</p>
-  <p>Esta Política de Privacidad describe cómo Drivezon ("nosotros", "la aplicación") recolecta, usa, almacena y protege la información de sus usuarios ("vos", "el usuario", "el conductor").</p>
-  <p>Al usar Drivezon, aceptás las prácticas descritas en este documento.</p>
-  <hr>
-  <h2>1. Información que recolectamos</h2>
-  <h3>1.1 Información de cuenta</h3>
-  <ul>
-    <li><strong>Correo electrónico</strong>, usado para crear tu cuenta, iniciar sesión, y comunicarnos con vos sobre tu cuenta.</li>
-    <li><strong>Contraseña</strong>, almacenada de forma cifrada por nuestro proveedor de infraestructura (Supabase); nunca tenemos acceso a tu contraseña en texto plano.</li>
-  </ul>
-  <h3>1.2 Ubicación</h3>
-  <ul>
-    <li><strong>Ubicación en primer plano y en segundo plano</strong>, mientras el "Modo Viaje" está activo. La usamos para mostrarte zonas de riesgo cercanas, alertarte automáticamente, y reportar tu posición en tiempo real a tus contactos de confianza si activás el modo pánico.</li>
-    <li>Cuando desactivás el Modo Viaje o cerrás sesión, tu última ubicación registrada se elimina de nuestros servidores de inmediato.</li>
-  </ul>
-  <h3>1.3 Contactos de confianza</h3>
-  <p>Si agregás contactos de confianza, almacenamos su correo electrónico y nombre, provistos por vos, para poder notificarlos en caso de una alerta.</p>
-  <h3>1.4 Reportes de zonas de riesgo</h3>
-  <p>Cuando reportás una zona de riesgo, almacenamos la ubicación, nivel de riesgo, y descripción. Si eliminás tu cuenta, tus reportes permanecen visibles para la comunidad, pero se desvinculan de tu identidad.</p>
-  <h3>1.5 Alertas de pánico</h3>
-  <p>Cuando activás el modo pánico, almacenamos tu ubicación, hora de activación, y quién fue notificado. Estos registros se conservan hasta 90 días después de que elimines tu cuenta, como respaldo ante un eventual requerimiento judicial.</p>
-  <h3>1.6 Notificaciones push</h3>
-  <p>Recolectamos un identificador de dispositivo (token de notificación push) para poder enviarte alertas relevantes.</p>
-  <h3>1.7 Grabación de audio</h3>
-  <p>Durante el Modo Viaje, Drivezon puede grabar el audio del habitáculo del vehículo como evidencia de respaldo ante incidentes de seguridad. Las grabaciones se cifran directamente en tu dispositivo con una clave única antes de cualquier otro procesamiento. Nunca se transmiten a nuestros servidores sin tu autorización explícita. Solo el titular de la cuenta puede acceder a las grabaciones. Se eliminan de tu dispositivo cuando eliminás tu cuenta.</p>
-
-  <h3>1.8 Galería de fotos (función futura, aún no activa)</h3>
-  <p>Drivezon incluye la capacidad técnica de acceder a tu galería de fotos para analizar capturas de pantalla de solicitudes de viaje, como parte de una función de seguridad planificada. Esta función todavía no está activa. Cuando esté disponible, cualquier imagen analizada se elimina automáticamente de tu galería inmediatamente después del análisis y nunca se almacena en nuestros servidores.</p>
-  <h3>1.9 Lo que NO recolectamos</h3>
-  <p>No usamos servicios de analíticas de comportamiento ni rastreo publicitario. No accedemos a tus contactos telefónicos, mensajes, ni llamadas. No recolectamos información financiera directamente.</p>
-  <hr>
-  <h2>2. Cómo usamos tu información</h2>
-  <p>Usamos la información recolectada exclusivamente para brindar las funciones de seguridad de la aplicación, comunicarnos con vos sobre tu cuenta, mejorar la aplicación, y cumplir con obligaciones legales cuando corresponda. No vendemos ni alquilamos tu información personal a terceros.</p>
-  <hr>
-  <h2>3. Con quién compartimos información</h2>
-  <ul>
-    <li><strong>Tus contactos de confianza:</strong> ven tu ubicación y estado de alerta solo cuando activás el modo pánico o entrás a una zona de riesgo.</li>
-    <li><strong>Proveedores de infraestructura:</strong> Supabase (base de datos y autenticación) y Expo/Google (notificaciones push y mapas).</li>
-    <li><strong>Firebase Crashlytics (Google):</strong> recibe registros técnicos anónimos de errores de la aplicación para mejorar su estabilidad. No incluye datos de ubicación ni contenido personal.</li>
-    <li><strong>Autoridades judiciales:</strong> solo en respuesta a un requerimiento legal válido de una autoridad competente.</li>
-  </ul>
-  <hr>
-  <h2>4. Seguridad de tu información</h2>
-  <p>Implementamos medidas técnicas razonables: cifrado de contraseñas, control de acceso a la base de datos mediante políticas de seguridad a nivel de fila, y restricción de nuestras claves de API a usos autorizados. Ningún sistema es 100% seguro; te recomendamos usar una contraseña única.</p>
-  <hr>
-  <h2>5. Tus derechos</h2>
-  <p>Como usuario, tenés derecho a acceder a tu información, corregirla, eliminar tu cuenta en cualquier momento desde Configuración, y personalizar tus preferencias de notificación (Plan Pro).</p>
-  <hr>
-  <h2>6. Eliminación de cuenta y retención de datos</h2>
-  <p>Al eliminar tu cuenta: tus contactos, zonas personales, preferencias y datos de sesión se eliminan de inmediato. Tus reportes de zonas permanecen de forma anónima. Tus alertas de pánico se conservan hasta 90 días adicionales. Tu correo se conserva en un registro interno para evitar abuso de beneficios promocionales en registros futuros.</p>
-  <hr>
-  <h2>7. Menores de edad</h2>
-  <p>Drivezon está destinado a conductores de plataformas de transporte, quienes deben ser mayores de edad según la legislación de su país. No recolectamos intencionalmente información de menores de edad.</p>
-  <hr>
-  <h2>8. Cambios a esta política</h2>
-  <p>Podemos actualizar esta Política de Privacidad ocasionalmente. Te notificaremos sobre cambios significativos a través de la aplicación o por correo electrónico.</p>
-  <hr>
-  <h2>9. Contacto</h2>
-  <p>Si tenés preguntas sobre esta Política de Privacidad, podés contactarnos a: <strong>desarrollostecr@mail.com</strong></p>
-</body>
-</html>
+<header class="top"><div class="shell nav"><a class="brand" href="index.html"><span class="shield">◆</span> DRIVEZON</a><nav aria-label="Navegación"><a aria-current="page" href="index.html">Privacidad</a><a href="delete-account.html">Eliminar cuenta</a></nav></div></header>
+<main class="shell"><div class="hero"><span class="eyebrow">TRANSPARENCIA Y SEGURIDAD</span><h1>Política de privacidad</h1><p class="lead">Cómo Drivezon trata los datos necesarios para ofrecer funciones de seguridad a conductores.</p><p class="meta">Versión de borrador para revisión · 13 de noviembre de 2026</p></div>
+<div class="notice"><strong>Información importante:</strong> este documento debe contrastarse con la versión publicada de la aplicación, sus permisos, el almacenamiento local y las configuraciones de terceros antes de declararlo definitivo.</div>
+<article class="content">
+<section id="responsable"><h2>1. Responsable y alcance</h2><p>Drivezon es una aplicación de seguridad para conductores. Esta política explica qué información puede tratarse cuando utilizás una cuenta y las funciones de seguridad de la aplicación. Para consultas de privacidad escribí a <a href="mailto:desarrollostecr@gmail.com">desarrollostecr@gmail.com</a>.</p></section>
+<section id="datos"><h2>2. Datos que tratamos</h2><h3>Cuenta y autenticación</h3><p>Se utiliza tu correo electrónico y la información de autenticación necesaria para crear o acceder a tu cuenta. La autenticación puede realizarse mediante Google o mediante los métodos habilitados en la aplicación. Las contraseñas, cuando corresponda, son gestionadas por el proveedor de autenticación; Drivezon no necesita conocerlas en texto plano.</p>
+<h3>Ubicación</h3><p>Cuando activás el Modo Viaje, la aplicación utiliza tu ubicación, incluso en segundo plano si otorgaste ese permiso, para identificar zonas de riesgo cercanas y emitir alertas. Si activás una función de emergencia o pánico, la ubicación puede compartirse con los destinatarios configurados para esa función. Desactivar el Modo Viaje detiene el seguimiento asociado a esa función; la eliminación de registros previamente generados depende de los períodos y procesos descritos en esta política.</p>
+<h3>Contactos de confianza</h3><p>Si configurás contactos de confianza, se tratan los datos que ingresás, como nombre y correo electrónico, para gestionar las alertas de seguridad correspondientes.</p>
+<h3>Reportes de zonas</h3><p>Si reportás una zona de riesgo, se pueden registrar sus coordenadas, nivel de riesgo, descripción y datos técnicos necesarios para gestionar el reporte. En las pruebas de eliminación realizadas, los reportes comunitarios asociados a la cuenta eliminada fueron borrados; las zonas generales o semilla no vinculadas a esa cuenta permanecieron.</p>
+<h3>Eventos de seguridad y alertas de pánico</h3><p>Las funciones de emergencia pueden generar registros de activación, ubicación, fecha y destinatarios de alertas. En las pruebas realizadas, los registros de pánico asociados a la cuenta fueron eliminados al borrar la cuenta. No se declara aquí una retención adicional de 90 días porque no se ha verificado un mecanismo que la implemente.</p>
+<h3>Notificaciones</h3><p>Se utiliza un identificador técnico del dispositivo (token push) para entregar notificaciones. Los tokens asociados a la cuenta se incluyen en el proceso de eliminación verificado.</p>
+<h3>Grabaciones de audio</h3><p>Si activás la grabación de audio durante un viaje, Drivezon puede generar archivos de audio en el dispositivo. El tratamiento de estos archivos depende de los controles y permisos del sistema operativo. No afirmamos que todos los archivos locales se eliminen automáticamente al cerrar la cuenta hasta verificar ese comportamiento en la versión publicada. Para borrar grabaciones que permanezcan en el teléfono, utilizá las opciones de eliminación disponibles en la aplicación o eliminá sus datos locales desde los ajustes del dispositivo; antes de hacerlo, respaldá cualquier archivo que necesités conservar.</p>
+<h3>Datos técnicos</h3><p>La aplicación y sus proveedores pueden tratar identificadores técnicos, registros de funcionamiento y datos necesarios para entregar servicios, prevenir abusos o diagnosticar fallos. La presencia y configuración de herramientas de diagnóstico específicas debe comprobarse frente a la versión publicada.</p></section>
+<section><h2>3. Finalidades del tratamiento</h2><p>Utilizamos los datos para autenticar usuarios, habilitar funciones de seguridad, emitir alertas, gestionar reportes comunitarios, administrar cuentas y suscripciones, atender solicitudes de soporte y prevenir usos abusivos de promociones o del servicio.</p></section>
+<section><h2>4. Proveedores y destinatarios</h2><p>Drivezon utiliza servicios de infraestructura y autenticación como Supabase y servicios del ecosistema Google/Expo para funcionalidades que pueden incluir notificaciones o mapas, según la configuración de la versión instalada. Los contactos de confianza que configurés podrán recibir la información de alerta que corresponda a las funciones activadas. La información también podrá comunicarse cuando exista una obligación legal aplicable.</p><p>No vendemos datos personales a anunciantes.</p></section>
+<section><h2>5. Ubicación y permisos</h2><p>La ubicación en segundo plano se utiliza para que las alertas de zonas de riesgo funcionen mientras el Modo Viaje esté activo, incluso cuando la aplicación no esté visible. Podés gestionar los permisos desde los ajustes del dispositivo. Algunas funciones no estarán disponibles si los desactivás. La grabación de audio requiere el permiso de micrófono correspondiente.</p></section>
+<section><h2>6. Conservación y eliminación</h2><p>Podés eliminar tu cuenta desde la aplicación o solicitar su eliminación desde nuestra <a href="delete-account.html">página de eliminación de cuenta</a>. Las pruebas realizadas confirmaron la eliminación de la identidad de autenticación y de registros asociados en varias tablas, incluidos contactos, tokens, reportes de zonas y eventos de seguridad. La eliminación de archivos locales de audio y la gestión de copias de seguridad requieren comprobación adicional.</p><p><strong>Excepción declarada:</strong> puede conservarse un registro del correo electrónico utilizado para evitar el uso repetido de beneficios promocionales. Ese registro no equivale a mantener activa la cuenta eliminada. Su plazo de conservación y mecanismo de supresión deben definirse y documentarse antes de la publicación definitiva.</p><p>Los plazos de conservación de respaldos técnicos, si existen, deben verificarse con los proveedores correspondientes. No se garantiza la desaparición instantánea de toda copia de respaldo.</p></section>
+<section><h2>7. Derechos y solicitudes</h2><p>Podés solicitar información sobre tus datos, su corrección o eliminación escribiendo a <a href="mailto:desarrollostecr@gmail.com">desarrollostecr@gmail.com</a>. Para proteger la cuenta, podremos pedir una verificación razonable de titularidad antes de ejecutar una solicitud. Para cerrar la cuenta consultá <a href="delete-account.html">cómo eliminar tu cuenta</a>.</p></section>
+<section><h2>8. Seguridad</h2><p>Utilizamos mecanismos de autenticación y controles de acceso a los datos, incluidos controles de acceso a nivel de fila cuando corresponda. Ningún sistema es completamente inmune a riesgos; recomendamos mantener actualizado el dispositivo y proteger el acceso a la cuenta.</p></section>
+<section><h2>9. Menores de edad</h2><p>Drivezon está dirigida a conductores mayores de edad. No está diseñada para su uso por menores.</p></section>
+<section><h2>10. Cambios y contacto</h2><p>Esta política podrá actualizarse para reflejar cambios funcionales, legales o de infraestructura. La versión publicada indicará su fecha de actualización. Consultas: <a href="mailto:desarrollostecr@gmail.com">desarrollostecr@gmail.com</a>.</p></section>
+</article><div class="cta"><h2>¿Querés eliminar tu cuenta?</h2><p>Consultá los pasos disponibles dentro y fuera de la aplicación.</p><a class="button" href="delete-account.html">Ver eliminación de cuenta</a></div></main>
+<footer><div class="shell">© 2026 Drivezon · <a href="index.html">Privacidad</a> · <a href="delete-account.html">Eliminación de cuenta</a></div></footer>
+</body></html>
